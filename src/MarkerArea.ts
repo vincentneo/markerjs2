@@ -1246,6 +1246,9 @@ export class MarkerArea {
    * Get results by adding a render event listener via {@linkcode addRenderEventListener}.
    */
   public async startRenderAndClose(): Promise<void> {
+    this.eventListeners['beforerender'].forEach((listener) => 
+      listener(new MarkerAreaEvent(this, false))
+    );
     const result = await this.render();
     const state = this.getState();
     //this.renderEventListeners.forEach((listener) => listener(result, state));

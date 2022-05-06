@@ -117,6 +117,12 @@ export interface IEventListenerRepository {
    * @since 2.19.0
    */
   blur: MarkerAreaEventHandler[];
+  /**
+   * Event handlers for the `beforerender` event.
+   * 
+   * @since 2.?.?
+   */
+  beforerender: MarkerAreaEventHandler[];
 }
 
 /**
@@ -138,6 +144,8 @@ export type EventHandler<
   ? MarkerEventHandler
   : T extends 'render'
   ? MarkerAreaRenderEventHandler
+  : T extends 'beforerender'
+  ? MarkerAreaEventHandler
   : MarkerAreaEventHandler;
 
 /**
@@ -200,6 +208,13 @@ export class EventListenerRepository implements IEventListenerRepository {
    * @since 2.19.0
    */
   blur: MarkerAreaEventHandler[] = [];
+    /**
+   * Event handlers for the `beforerender` event.
+   * 
+   * @since 2.?.?
+   */
+   beforerender: MarkerAreaEventHandler[] = [];
+
 
 
   /**
